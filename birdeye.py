@@ -222,7 +222,7 @@ class BIRDEYE():
                         data = data['data']
                 else:
                     err_name = http_err_codes[r.status_code]['name']
-                    err_desc = http_err_codes[r.status_code]['descriptin']
+                    err_desc = http_err_codes[r.status_code]['description']
                     print("Error {} : {} - {}...".format(r.status_code, err_name, err_desc))
                     print("exiting...")
                     print(r.text)
@@ -255,7 +255,7 @@ class BIRDEYE():
                         data = data['data']
                 else:
                     err_name = http_err_codes[r.status_code]['name']
-                    err_desc = http_err_codes[r.status_code]['descriptin']
+                    err_desc = http_err_codes[r.status_code]['description']
                     print("Error {} : {} - {}...".format(r.status_code, err_name, err_desc))
                     print("exiting...")
                     print(r.text)
