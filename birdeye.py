@@ -177,7 +177,7 @@ http_err_codes = {
 class BIRDEYE():
 #<=====>#
 
-    def __init__(self, chain='solana', api_free_key=None, api_paid_key=None, wallet_addr=None, throttle=0.1):
+    def __init__(self, chain='solana', api_free_key=None, api_paid_key=None, wallet_addr=None, throttle=0.25):
 
         self.chain = chain
         allowed_chains = ['solana', 'ethereum', 'arbitrum', 'avalanche', 'bsc', 'optimism', 'polygon', 'base', 'zksync']
@@ -2473,7 +2473,7 @@ free_key  = 'PutYourFreeChainHere'
 paid_key  = 'PutYourPaidChainHere'
 wallet_addr  = 'PutYourWalletAddrHere'
 
-be = BIRDEYE(chain='solana', api_free_key=free_key, api_paid_key=paid_key, wallet_addr=wallet_addr, throttle=0.1)
+be = BIRDEYE(chain='solana', api_free_key=free_key, api_paid_key=paid_key, wallet_addr=wallet_addr, throttle=0.25)
 
 #<=====>#
 # Default Run
