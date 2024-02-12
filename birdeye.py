@@ -185,6 +185,7 @@ class BIRDEYE():
             print('chain must be in {}...'.format(allowed_chains))
             exit()
         self.wallet_addr = wallet_addr
+        print('wallet_addr : {}'.format(self.wallet_addr))
 
         self.api_free_key = api_free_key
         self.api_paid_key  = api_paid_key
@@ -221,8 +222,8 @@ class BIRDEYE():
                     if 'data' in data:
                         data = data['data']
                 else:
-                    err_name = http_err_codes[r.status_code]['name']
-                    err_desc = http_err_codes[r.status_code]['description']
+                    err_name = http_err_codes[str(r.status_code)]['name']
+                    err_desc = http_err_codes[str(r.status_code)]['description']
                     print("Error {} : {} - {}...".format(r.status_code, err_name, err_desc))
                     print("exiting...")
                     print(r.text)
@@ -254,8 +255,8 @@ class BIRDEYE():
                     if 'data' in data:
                         data = data['data']
                 else:
-                    err_name = http_err_codes[r.status_code]['name']
-                    err_desc = http_err_codes[r.status_code]['description']
+                    err_name = http_err_codes[str(r.status_code)]['name']
+                    err_desc = http_err_codes[str(r.status_code)]['description']
                     print("Error {} : {} - {}...".format(r.status_code, err_name, err_desc))
                     print("exiting...")
                     print(r.text)
@@ -2195,11 +2196,11 @@ class BIRDEYE():
 def test_main(be):
     print('test_main()')
 
-    test_free_working_yn = 'Y'
-    test_free_broken_yn  = 'Y'
+    test_free_working_yn = 'N'
+    test_free_broken_yn  = 'N'
 
-    test_prem_working_yn = 'Y'
-    test_prem_broken_yn  = 'Y'
+    test_prem_working_yn = 'N'
+    test_prem_broken_yn  = 'N'
 
     test_other_working_yn = 'Y'
     test_other_broken_yn  = 'Y'
@@ -2266,6 +2267,14 @@ def test_free_working(be):
     addr_list.append("mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So")
     data = be.tkn_prc_mult(tkn_addr_list=addr_list)
     pprint(data)
+
+    pass
+
+
+#<=====>#
+
+def test_free_broken(be):
+    print('test_free_broken()')
 
     pass
 
@@ -2383,6 +2392,14 @@ def test_prem_working(be):
 #<=====>#
 
 
+def test_prem_broken(be):
+    print('test_prem_broken()')
+
+    pass
+
+#<=====>#
+
+
 def test_other_working(be):
     print('test_other_working()')
 
@@ -2394,58 +2411,42 @@ def test_other_working(be):
 
     # works
     print('')
-    print('premium wallet_port')
+    print('premium wallet_port : {}'.format(be.wallet_addr))
     data = be.wallet_port(wallet_addr=be.wallet_addr)
     pprint(data)
 
     # works
     print('')
-    print('premium wallet_port_chains')
+    print('premium wallet_port_chains : {}'.format(be.wallet_addr))
     data = be.wallet_port_chains(wallet_addr=be.wallet_addr)
     pprint(data)
 
     # works
     print('')
-    print('premium wallet_tkn_bal')
+    print('premium wallet_tkn_bal : {}'.format(be.wallet_addr))
     data = be.wallet_tkn_bal(wallet_addr=be.wallet_addr, tkn_addr="EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm")
     pprint(data)
 
     # works
     print('')
-    print('premium wallet_tkn_bal')
+    print('premium wallet_tkn_bal : {}'.format(be.wallet_addr))
     data = be.wallet_tkn_bal(wallet_addr=be.wallet_addr, tkn_addr="AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR")
     pprint(data)
 
     # works
     print('')
-    print('premium wallet_txn_hist')
+    print('premium wallet_txn_hist : {}'.format(be.wallet_addr))
     data = be.wallet_txn_hist(wallet_addr=be.wallet_addr)
     print(data)
 
     # works
     print('')
-    print('premium wallet_txn_hist_chains')
+    print('premium wallet_txn_hist_chains : {}'.format(be.wallet_addr))
     data = be.wallet_txn_hist_chains(wallet_addr=be.wallet_addr)
     print(data)
 
     pass
 
-
-#<=====>#
-
-def test_free_broken(be):
-    print('test_free_broken()')
-
-    pass
-
-
-#<=====>#
-
-
-def test_prem_broken(be):
-    print('test_prem_broken()')
-
-    pass
 
 #<=====>#
 
